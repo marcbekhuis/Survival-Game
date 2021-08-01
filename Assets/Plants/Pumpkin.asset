@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5abd52cdee066648839da0ca7d6d07d, type: 3}
+  m_Name: Pumpkin
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  randomItems: []
+  health: 0
+  spritePhases:
+  - {fileID: 11400000, guid: db639045303d1164d90dc80e36684f82, type: 2}
+  - {fileID: 11400000, guid: b0c5ad8aa619a2a47bc4e33f42381eec, type: 2}
+  - {fileID: 11400000, guid: 919078f56a6f21e4fa2866d77f55a517, type: 2}
+  - {fileID: 11400000, guid: cb9b01427bbb05449811496660152023, type: 2}
+  - {fileID: 11400000, guid: 2d4619abcdc908540b5f332fc807a65a, type: 2}
+  - {fileID: 11400000, guid: 3cf9ba150489f4041a3125bc192933b5, type: 2}
+  growthTime: 540
+  grown: 0
+  age: 0

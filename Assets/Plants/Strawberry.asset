@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5abd52cdee066648839da0ca7d6d07d, type: 3}
+  m_Name: Strawberry
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  randomItems: []
+  health: 0
+  spritePhases:
+  - {fileID: 11400000, guid: 355ac9e0be2c6f14496bce0ae0332219, type: 2}
+  - {fileID: 11400000, guid: 769504dcc90ac2644887934405fcb001, type: 2}
+  - {fileID: 11400000, guid: 74a86c4d3b5348143b9fbc3e73547a41, type: 2}
+  - {fileID: 11400000, guid: df4829e03a7e982489987487359a8bee, type: 2}
+  - {fileID: 11400000, guid: 8b891946320f72f40b4dba06a0581f12, type: 2}
+  - {fileID: 11400000, guid: b0d6d821d8fcc024e9d926f2ff7a6516, type: 2}
+  growthTime: 540
+  grown: 0
+  age: 0

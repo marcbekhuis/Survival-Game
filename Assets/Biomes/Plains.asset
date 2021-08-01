@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1082eb53747e8478a8bda32f4581a5, type: 3}
+  m_Name: Plains
+  m_EditorClassIdentifier: 
+  minTempature: -10
+  maxTempature: 20
+  minWetness: 0
+  maxWetness: 50
+  minLandHeight: 0
+  maxLandHeight: 650
+  minSeaLevel: -1000
+  maxSeaLevel: -10
+  minWaterLevel: -1000
+  maxWaterLevel: 0
+  minSize: 3
+  requiredNeighbourBiomes: []
+  tile: {fileID: 11400000, guid: babc89c55bc9b4c40ab2d8cd59e89891, type: 2}

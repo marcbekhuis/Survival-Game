@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5abd52cdee066648839da0ca7d6d07d, type: 3}
+  m_Name: Grape
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  randomItems: []
+  health: 0
+  spritePhases:
+  - {fileID: 11400000, guid: 40d9bb49cc8d184468e13d9aafb1a39c, type: 2}
+  - {fileID: 11400000, guid: d4d685f8916a87e4a95e8164f7326fc2, type: 2}
+  - {fileID: 11400000, guid: e91c80a9eef1103488750c6eebf79082, type: 2}
+  - {fileID: 11400000, guid: 2ab90ca99a2c3a945b051fd904e4d630, type: 2}
+  - {fileID: 11400000, guid: d06994ae380809a4d97ba8ade36d8c16, type: 2}
+  - {fileID: 11400000, guid: 363cd9cd7af6bac49878f564d296e9a7, type: 2}
+  - {fileID: 11400000, guid: 05a8ac819244b354497c65a36c2f5a6d, type: 2}
+  growthTime: 540
+  grown: 0
+  age: 0
