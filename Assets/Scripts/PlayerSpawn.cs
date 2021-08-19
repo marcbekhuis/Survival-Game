@@ -47,6 +47,6 @@ public class PlayerSpawn : Singleton<PlayerSpawn>
         }
 
         Vector2[] positions = SpawnPositions();
-        player.position = positions[Random.Range(0, positions.Length)];
+        player.position = positions[Random.Range(0, positions.Length)] + new Vector2(0.5f, 0f);
     }
 }

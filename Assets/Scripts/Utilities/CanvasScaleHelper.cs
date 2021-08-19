@@ -7,7 +7,7 @@ public class CanvasScaleHelper : Singleton<CanvasScaleHelper>
 {
     private Canvas canvas;
 
-    private void Awake()
+    private new void Awake()
     {
         base.Awake();
         canvas = GetComponent<Canvas>();

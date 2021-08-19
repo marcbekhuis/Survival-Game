@@ -23,7 +23,8 @@ public class MapGenerator : MonoBehaviour
         MapData.instance.mapSize = mapSize;
         if(landscapeGenerator) yield return StartCoroutine(landscapeGenerator.MakeLandscape(mapSize));
         if(resourceGenerator) yield return StartCoroutine(resourceGenerator.GenerateResources(mapSize));
-        PlayerSpawn.instance.SpawnPlayer();
+        if(PlayerSpawn.instance) PlayerSpawn.instance.SpawnPlayer();
+        if(PathFinding.instance) PathFinding.instance.SetupPathFinding();
 
         GameManager.instance.gameLoading = false;
         LoadingScreen.instance.ToggleLoadingScreen(false);

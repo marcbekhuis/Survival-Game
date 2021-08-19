@@ -7,6 +7,10 @@ public class Resource : ScriptableObject
     [Header("Resource")]
     public float maxHealth = 10;
     public RandomItem[] randomItems = new RandomItem[] { };
+    [Space]
+    [Header("AI Movement")]
+    public WalkableType isWalkable = WalkableType.Walkable;
+
     [HideInInspector] public float health = 0;
 
     protected Vector2Int gridPosition;
@@ -14,6 +18,7 @@ public class Resource : ScriptableObject
     public Resource(Resource resource, Vector2Int gridPosition, float maxHealth)
     {
         randomItems = resource.randomItems;
+        isWalkable = resource.isWalkable;
         this.gridPosition = gridPosition;
         this.maxHealth = maxHealth;
         this.health = maxHealth;
@@ -44,4 +49,13 @@ public class Resource : ScriptableObject
     {
 
     }
+
+    public virtual WalkableType IsWalkable
+    {
+        get
+        {
+            return isWalkable;
+        }
+    }
+
 }

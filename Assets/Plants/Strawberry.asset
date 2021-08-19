@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   randomItems: []
+  isWalkable: 0
   health: 0
   spritePhases:
   - {fileID: 11400000, guid: 355ac9e0be2c6f14496bce0ae0332219, type: 2}

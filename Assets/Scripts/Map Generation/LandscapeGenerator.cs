@@ -237,6 +237,7 @@ public class LandscapeGenerator : MonoBehaviour
     public void PlaceTile(int x, int y)
     {
         MapTile mapTile = MapData.instance.mapTiles[x, y];
+        AddBiomeFilteredMapTile(mapTile);
         if (mapTile.biome)
         {
             if (mapTile.biome.tile)
@@ -252,5 +253,12 @@ public class LandscapeGenerator : MonoBehaviour
         {
             Debug.LogError("Tile at position: x:" + x + ", y:" + y + " has no biome");
         }
+    }
+
+    private void AddBiomeFilteredMapTile(MapTile mapTile)
+    {
+        if (MapData.instance.mapTilesFilterByBiome.ContainsKey(mapTile.biome))
+            MapData.instance.mapTilesFilterByBiome[mapTile.biome].Add(mapTile);
+        else MapData.instance.mapTilesFilterByBiome.Add(mapTile.biome, new List<MapTile> { mapTile });
     }
 }

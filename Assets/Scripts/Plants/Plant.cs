@@ -9,6 +9,7 @@ public class Plant : Resource
     [Header("Plant")]
     public TileBase[] spritePhases;
     [Tooltip("Time in seconds")] public int growthTime = 60;
+    public WalkableType[] growthIsWalkable;
     [HideInInspector] public bool grown = false;
 
     protected float timeBetweenPhases = 0;
@@ -20,10 +21,12 @@ public class Plant : Resource
     public Plant(Plant plant, Vector2Int gridPosition, float maxHealth) : base(plant, gridPosition, maxHealth)
     {
         growthTime = 60;
+        growthIsWalkable = plant.growthIsWalkable;
     }
 
     public Plant(Plant plant, Tilemap tilemap, Vector2Int gridPosition) : base(plant, gridPosition, plant.maxHealth)
     {
+        growthIsWalkable = plant.growthIsWalkable;
         this.spritePhases = plant.spritePhases;
         this.growthTime = plant.growthTime;
         this.grown = false;
@@ -36,6 +39,7 @@ public class Plant : Resource
 
     public Plant(Plant plant, Tilemap tilemap, Vector2Int gridPosition, float age) : base(plant, gridPosition, plant.maxHealth)
     {
+        growthIsWalkable = plant.growthIsWalkable;
         this.spritePhases = plant.spritePhases;
         this.growthTime = plant.growthTime;
         this.grown = false;
@@ -61,9 +65,22 @@ public class Plant : Resource
         get => gridPosition;
     }
 
+    public override WalkableType IsWalkable
+    {
+        get
+        {
+            if (growthPhase < growthIsWalkable.Length)
+                return growthIsWalkable[growthPhase];
+            if (growthIsWalkable != null && growthIsWalkable.Length > 0) 
+                return growthIsWalkable[growthIsWalkable.Length - 1];
+            return isWalkable;
+        }
+    }
+
     public void SetGrowthPhase(int value, bool visible)
     {
         growthPhase = Mathf.Clamp(value, 0, spritePhases.Length - 1);
+        if(growthPhase < growthIsWalkable.Length) PathFinding.instance.PathNodeChangeIsWalkable(GridPosition.x, GridPosition.y, growthIsWalkable[growthPhase]);
         if (visible) UpdateTilemap();
     }
 

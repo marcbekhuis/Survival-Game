@@ -65,7 +65,11 @@ public class ResourceGenerator : MonoBehaviour
             lastValue += resourcesFilter[mapTile.biome][i].change;
         }
 
-        if (!resource) return;
+        if (!resource)
+        {
+            AddBiomeFilteredMapTileNoResource(mapTile);
+            return;
+        }
         Plant plant = (Plant)resource;
         Plant plantedPlant = plant.Create(plant, new Tilemap[] { tilemap, secondTilemap }, gridPosition, Random.Range(0, plant.growthTime));
         mapTile.resource = plantedPlant;
@@ -80,4 +84,10 @@ public class ResourceGenerator : MonoBehaviour
         public float change = 10;
     }
 
+    private void AddBiomeFilteredMapTileNoResource(MapTile mapTile)
+    {
+        if (MapData.instance.mapTilesFilterByBiomeNoResource.ContainsKey(mapTile.biome))
+            MapData.instance.mapTilesFilterByBiomeNoResource[mapTile.biome].Add(mapTile);
+        else MapData.instance.mapTilesFilterByBiomeNoResource.Add(mapTile.biome, new List<MapTile> { mapTile });
+    }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1082eb53747e8478a8bda32f4581a5, type: 3}
   m_Name: River
   m_EditorClassIdentifier: 
+  isWalkable: 0
   minTempature: -5
   maxTempature: 20
   minWetness: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1082eb53747e8478a8bda32f4581a5, type: 3}
   m_Name: Plains
   m_EditorClassIdentifier: 
+  isWalkable: 0
   minTempature: -10
   maxTempature: 20
   minWetness: 0

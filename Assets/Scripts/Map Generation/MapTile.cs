@@ -65,4 +65,34 @@ public class MapTile
             else if (biomeCluster != mapTile.biomeCluster) mapTile.biomeCluster.MergeCluster(biomeCluster);
         }
     }
+
+    public WalkableType IsWalkable
+    {
+        get
+        {
+            if (resource)
+            {
+                if (resource.IsWalkable == WalkableType.Blocked)
+                {
+                    return WalkableType.Blocked;
+                }
+            }
+            if (biome.isWalkable == WalkableType.Blocked)
+            {
+                return WalkableType.Blocked;
+            }
+            if (resource)
+            {
+                if (resource.IsWalkable == WalkableType.Semi)
+                {
+                    return WalkableType.Semi;
+                }
+            }
+            if (biome.isWalkable == WalkableType.Semi)
+            {
+                return WalkableType.Semi;
+            }
+            return WalkableType.Walkable;
+        }
+    }
 }

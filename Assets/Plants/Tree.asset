@@ -39,6 +39,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
+  isWalkable: 2
   health: 0
   spritePhases:
   - {fileID: 11400000, guid: f8f24f256e369bb46b1d91ac3e3adf20, type: 2}
@@ -47,6 +48,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d4ab91557ab8884ca16e5d58eaf27e9, type: 2}
   - {fileID: 11400000, guid: 9a2b20d2033cf594ab257e118438c815, type: 2}
   growthTime: 1200
+  growthIsWalkable: 0000000000000000000000000200000001000000
   grown: 0
   age: 0
   secondSpritePhases:

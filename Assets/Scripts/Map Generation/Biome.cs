@@ -6,6 +6,10 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(fileName = "New Biome", menuName = "ScriptableObjects/Biome")]
 public class Biome : ScriptableObject
 {
+    [Header("AI Movement")]
+    public WalkableType isWalkable = WalkableType.Walkable;
+    [Space]
+    [Header("Map Generation")]
     [Tooltip("Tempature in celcius")]public float minTempature = 10;
     [Tooltip("Tempature in celcius")] public float maxTempature = 20;
     [Space]
@@ -24,5 +28,6 @@ public class Biome : ScriptableObject
     public int minSize = 1;
     public Biome[] requiredNeighbourBiomes;
     [Space]
+    [Header("Tilemap")]
     public TileBase tile;
 }

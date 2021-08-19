@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class AspectPreserver : MonoBehaviour
 {
     private Image image;
+    Vector2 oldScreenSize;
 
     // Start is called before the first frame update
     void Update()
@@ -16,10 +17,12 @@ public class AspectPreserver : MonoBehaviour
 
     public void AspectRatio()
     {
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+        if (screenSize == oldScreenSize) return;
+
         if (!image) image = GetComponent<Image>();
 
         Vector2 imageSize = image.sprite.rect.size;
-        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
 
         float scaleFactorX = screenSize.x / imageSize.x;
         float scaleFactorY = screenSize.y / imageSize.y;
