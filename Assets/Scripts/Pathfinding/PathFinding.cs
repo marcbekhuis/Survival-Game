@@ -18,12 +18,12 @@ public class PathFinding : Singleton<PathFinding>
 
     public void SetupPathFinding()
     {
-        grid = new PathNode[MapData.instance.mapSize.x, MapData.instance.mapSize.y];
-        for (int x = 0; x < MapData.instance.mapSize.x; x++)
+        grid = new PathNode[MapData.instance.Size.x, MapData.instance.Size.y];
+        for (int x = 0; x < MapData.instance.Size.x; x++)
         {
-            for (int y = 0; y < MapData.instance.mapSize.y; y++)
+            for (int y = 0; y < MapData.instance.Size.y; y++)
             {
-                PathNode pathNode = new PathNode(MapData.instance.mapTiles[x, y], x, y, MapData.instance.mapTiles[x, y].IsWalkable);
+                PathNode pathNode = new PathNode(MapData.instance.GetGridCell(x, y), x, y, MapData.instance.GetGridCell(x, y).IsWalkable);
                 grid[x, y] = pathNode;
                 pathNode.gCost = int.MaxValue;
                 pathNode.CalculateFCost();
@@ -50,22 +50,22 @@ public class PathFinding : Singleton<PathFinding>
 
     public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
     {
-        if (startX < 0 || startX >= MapData.instance.mapSize.x)
+        if (startX < 0 || startX >= MapData.instance.Size.x)
         {
             Debug.LogError("PathFinding: Outside map!");
             return null;
         }
-        if (startY < 0 || startY >= MapData.instance.mapSize.y)
+        if (startY < 0 || startY >= MapData.instance.Size.y)
         {
             Debug.LogError("PathFinding: Outside map!");
             return null;
         }
-        if (endX < 0 || endX >= MapData.instance.mapSize.x)
+        if (endX < 0 || endX >= MapData.instance.Size.x)
         {
             Debug.LogError("PathFinding: Outside map!");
             return null;
         }
-        if (endY < 0 || endY >= MapData.instance.mapSize.y)
+        if (endY < 0 || endY >= MapData.instance.Size.y)
         {
             Debug.LogError("PathFinding: Outside map!");
             return null;
@@ -154,21 +154,21 @@ public class PathFinding : Singleton<PathFinding>
             // Left Down
             if (currentNode.y - 1 >= 0) neighbourList.Add(grid[currentNode.x - 1, currentNode.y - 1]);
             // Left Up
-            if (currentNode.y + 1 < MapData.instance.mapSize.y) neighbourList.Add(grid[currentNode.x - 1, currentNode.y + 1]);
+            if (currentNode.y + 1 < MapData.instance.Size.y) neighbourList.Add(grid[currentNode.x - 1, currentNode.y + 1]);
         }
-        if(currentNode.x + 1 < MapData.instance.mapSize.x)
+        if(currentNode.x + 1 < MapData.instance.Size.x)
         {
             // Right
             neighbourList.Add(grid[currentNode.x + 1, currentNode.y]);
             // Right Down
             if (currentNode.y - 1 >= 0) neighbourList.Add(grid[currentNode.x + 1, currentNode.y - 1]);
             // Right Up
-            if (currentNode.y + 1 < MapData.instance.mapSize.y) neighbourList.Add(grid[currentNode.x + 1, currentNode.y + 1]);
+            if (currentNode.y + 1 < MapData.instance.Size.y) neighbourList.Add(grid[currentNode.x + 1, currentNode.y + 1]);
         }
         // Down
         if (currentNode.y - 1 >= 0) neighbourList.Add(grid[currentNode.x, currentNode.y - 1]);
         // Up
-        if (currentNode.y + 1 < MapData.instance.mapSize.y) neighbourList.Add(grid[currentNode.x, currentNode.y + 1]);
+        if (currentNode.y + 1 < MapData.instance.Size.y) neighbourList.Add(grid[currentNode.x, currentNode.y + 1]);
 
         return neighbourList;
     }

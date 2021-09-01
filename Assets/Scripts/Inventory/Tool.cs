@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tool : Durability
 {
+    [Header("Tool")]
     [Min(0)] public float damage = 1;
     [Min(0)] public float radius = 1;
     [Min(0)] public float arc = 90;
@@ -15,7 +16,7 @@ public class Tool : Durability
         arc = item.arc;
     }
 
-    public Tool(string description, float weight, int maxStack, Sprite icon, Sprite sprite, Inventory inventory, float maxDurability, float damage, float radius, float arc, int amount = 1) : base(description, weight, maxStack, icon, sprite, inventory, maxDurability, amount)
+    public Tool(string description, float weight, int maxStack, Sprite icon, Sprite sprite, Inventory inventory, float maxDurability, float useDurability, float damage, float radius, float arc, int amount = 1) : base(description, weight, maxStack, icon, sprite, inventory, maxDurability, useDurability, amount)
     {
         this.damage = damage;
         this.radius = radius;

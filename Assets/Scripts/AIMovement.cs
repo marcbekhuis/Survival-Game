@@ -6,15 +6,24 @@ public class AIMovement : Movement
 {
     public Transform target;
 
+    [SerializeField] private HealthSystem healthSystem;
     [SerializeField] private bool debugging = false;
 
     private Vector2Int lastRequestPosition = Vector2Int.down;
     private List<Vector2> path;
 
+    private bool paralized = false;
+
+    private new void Start()
+    {
+        base.Start();
+        if(healthSystem) healthSystem.OnValueEmpty += Paralize;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.GamePaused)
+        if (GameManager.instance.GamePaused || paralized)
         {
             Move(Vector2.zero, false);
             return;
@@ -55,5 +64,10 @@ public class AIMovement : Movement
             return;
         }
         Move(Vector2.zero, false);
+    }
+
+    public void Paralize(float value, float value2)
+    {
+        paralized = true;
     }
 }

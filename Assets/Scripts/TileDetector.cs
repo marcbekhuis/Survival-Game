@@ -23,11 +23,11 @@ public class TileDetector : MonoBehaviour
             mapTile = null;
             return;
         }
-        if (position.x >= MapData.instance.mapSize.x || position.y >= MapData.instance.mapSize.y)
+        if (position.x >= MapData.instance.Size.x || position.y >= MapData.instance.Size.y)
         {
             mapTile = null;
             return;
         }
-        mapTile = MapData.instance.mapTiles[position.x, position.y];
+        mapTile = MapData.instance.GetGridCell(position);
     }
 }

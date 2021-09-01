@@ -12,17 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1082eb53747e8478a8bda32f4581a5, type: 3}
   m_Name: Desert
   m_EditorClassIdentifier: 
-  isWalkable: 0
-  minTempature: 20
-  maxTempature: 50
-  minWetness: 0
-  maxWetness: 100
-  minLandHeight: 0
-  maxLandHeight: 650
-  minSeaLevel: -1000
-  maxSeaLevel: 0
-  minWaterLevel: -1000
-  maxWaterLevel: 0
-  minSize: 1
-  requiredNeighbourBiomes: []
   tile: {fileID: 11400000, guid: 2a0526bd0af6ada48b32201c64469e33, type: 2}
+  maxHeight: 800
+  minHeight: 0
+  maxWetness: 100
+  minWetness: 0
+  maxTempature: 50
+  minTempature: 20
+  maxOceanLevel: -5
+  minOceanLevel: -1000
+  isWalkable: 0
+  minSize: 1
+  requiredBiomeNeighbours: []

@@ -56,7 +56,7 @@ public class LargePlant : Plant
 
     public override void RemoveFromTilemap()
     {
-        tilemap.SetTile((Vector3Int)gridPosition, null);
+        base.RemoveFromTilemap();
         secondTilemap.SetTile((Vector3Int)gridPosition + new Vector3Int(0, 1, 0), null);
     }
 }

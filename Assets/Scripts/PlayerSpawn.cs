@@ -30,7 +30,7 @@ public class PlayerSpawn : Singleton<PlayerSpawn>
             foreach (var maptile in biomeCluster.mapTiles)
             {
                 if (maptile.gridPosition.x < distanceFromBorder || maptile.gridPosition.y < distanceFromBorder) continue;
-                if (maptile.gridPosition.x > MapData.instance.mapSize.x - 1 - distanceFromBorder || maptile.gridPosition.y > MapData.instance.mapSize.y - 1 - distanceFromBorder) continue;
+                if (maptile.gridPosition.x > MapData.instance.Size.x - 1 - distanceFromBorder || maptile.gridPosition.y > MapData.instance.Size.y - 1 - distanceFromBorder) continue;
                 positions.Add(maptile.gridPosition);
             }
         }

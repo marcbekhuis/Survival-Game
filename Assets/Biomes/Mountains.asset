@@ -12,17 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1082eb53747e8478a8bda32f4581a5, type: 3}
   m_Name: Mountains
   m_EditorClassIdentifier: 
-  isWalkable: 1
-  minTempature: -50
-  maxTempature: 50
-  minWetness: 0
-  maxWetness: 100
-  minLandHeight: 650
-  maxLandHeight: 1000
-  minSeaLevel: -1000
-  maxSeaLevel: -10
-  minWaterLevel: -1000
-  maxWaterLevel: 0
-  minSize: 5
-  requiredNeighbourBiomes: []
   tile: {fileID: 11400000, guid: 611f8a974e3617243b59310ee23ea34b, type: 2}
+  maxHeight: 1000
+  minHeight: 800
+  maxWetness: 100
+  minWetness: 0
+  maxTempature: 50
+  minTempature: -50
+  maxOceanLevel: -5
+  minOceanLevel: -1000
+  isWalkable: 1
+  minSize: 5
+  requiredBiomeNeighbours: []

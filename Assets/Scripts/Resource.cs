@@ -47,7 +47,8 @@ public class Resource : ScriptableObject
 
     public virtual void RemoveFromTilemap()
     {
-
+        MapData.instance.GetGridCell(gridPosition).resource = null;
+        PathFinding.instance.PathNodeChangeIsWalkable(gridPosition.x, gridPosition.y, WalkableType.Walkable);
     }
 
     public virtual WalkableType IsWalkable

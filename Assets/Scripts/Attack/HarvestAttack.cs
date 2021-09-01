@@ -16,8 +16,8 @@ public class HarvestAttack : AttackSystem
             for (int y = positionInt.y - radiusInt; y < positionInt.y + radiusInt; y++)
             {
                 if (x < 0 || y < 0) continue;
-                if (x >= MapData.instance.mapSize.x || y >= MapData.instance.mapSize.y) continue;
-                if (MapData.instance.mapTiles[x, y].resource) MapData.instance.mapTiles[x, y].resource.SetHealth(-damage, this);
+                if (x >= MapData.instance.Size.x || y >= MapData.instance.Size.y) continue;
+                if (MapData.instance.GetGridCell(x, y).resource) MapData.instance.GetGridCell(x, y).resource.SetHealth(-damage, this);
             }
         }
     }

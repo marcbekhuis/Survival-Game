@@ -19,9 +19,8 @@ public class MapGenerator : MonoBehaviour
         LoadingScreen.instance.ToggleLoadingScreen(true);
         GameManager.instance.gameLoading = true;
 
-        MapData.instance.mapTiles = new MapTile[mapSize.x, mapSize.y];
-        MapData.instance.mapSize = mapSize;
-        if(landscapeGenerator) yield return StartCoroutine(landscapeGenerator.MakeLandscape(mapSize));
+        MapData.instance.SetupGrid(mapSize);
+        if(landscapeGenerator) yield return StartCoroutine(landscapeGenerator.MakeLandscape());
         if(resourceGenerator) yield return StartCoroutine(resourceGenerator.GenerateResources(mapSize));
         if(PlayerSpawn.instance) PlayerSpawn.instance.SpawnPlayer();
         if(PathFinding.instance) PathFinding.instance.SetupPathFinding();

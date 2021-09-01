@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private BiomeMultiplier[] biomeMultipliers;
     [SerializeField] private TileDetector tileDetector;
 
-    private void Start()
+    protected void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
     }

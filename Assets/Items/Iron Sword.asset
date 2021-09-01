@@ -9,13 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5131ee2aa10586f46be12d7cf2be0167, type: 3}
+  m_Script: {fileID: 11500000, guid: b5481b571de370e4ca28741c18620674, type: 3}
   m_Name: Iron Sword
   m_EditorClassIdentifier: 
-  description: Usefull for killing things.
-  weight: 10
+  description: Used to hurt creatures.
+  weight: 0
   maxStack: 1
   icon: {fileID: 21300000, guid: 8f28955d92038974a9b04aafaeea79b0, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8f28955d92038974a9b04aafaeea79b0, type: 3}
   amount: 0
   inventory: {fileID: 0}
+  maxDurability: 100
+  useDurability: 5
+  damage: 5
+  radius: 3
+  arc: 90

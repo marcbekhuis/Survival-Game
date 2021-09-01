@@ -109,6 +109,7 @@ public class Plant : Resource
 
     public override void RemoveFromTilemap()
     {
+        base.RemoveFromTilemap();
         tilemap.SetTile((Vector3Int)gridPosition, null);
     }
 

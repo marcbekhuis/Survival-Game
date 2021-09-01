@@ -25,7 +25,7 @@ public class ResourceGenerator : MonoBehaviour
             {
                 GenerateResource(new Vector2Int(x, y));
                 loops++;
-                if ((System.DateTime.Now - loopStartTime).TotalSeconds >= 1)
+                if ((System.DateTime.Now - loopStartTime).TotalSeconds >= 0.033333f)
                 {
                     LoadingScreen.instance.UpdateProgress((float)loops / (float)lastLoop, "Generating resources");
                     yield return null;
@@ -49,7 +49,11 @@ public class ResourceGenerator : MonoBehaviour
 
     private void GenerateResource(Vector2Int gridPosition)
     {
-        MapTile mapTile = MapData.instance.mapTiles[gridPosition.x, gridPosition.y];
+        MapTile mapTile = MapData.instance.GetGridCell(gridPosition.x, gridPosition.y);
+
+        if (mapTile == null) return;
+        if (!mapTile.biome) return;
+        if (resourcesFilter == null) return;
         if (!resourcesFilter.ContainsKey(mapTile.biome)) return;
 
         float random = Random.Range(0, resourcesFilter[mapTile.biome].Count * 100f);

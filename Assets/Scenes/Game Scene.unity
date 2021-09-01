@@ -1537,7 +1537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &914028211
 Transform:
   m_ObjectHideFlags: 0
@@ -238165,15 +238165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizeVar: {x: 9, y: 3}
-  startingItems:
-  - item: {fileID: 11400000, guid: 401337cbf21d3b944bc94b352f7d3bef, type: 2}
-    amount: 50
-  - item: {fileID: 11400000, guid: b182e28f8fd7bb54996ec85fb9c67b18, type: 2}
-    amount: 1000
-  - item: {fileID: 11400000, guid: a53873904bdeba345adda5ee84a22b5c, type: 2}
-    amount: 30
-  - item: {fileID: 11400000, guid: 6f92654bbd74ec446b4451c89e060a55, type: 2}
-    amount: 1000
+  startingItems: []
 --- !u!114 &1504907054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238227,6 +238219,9 @@ MonoBehaviour:
   minChange: 0
   maxChange: 100
   bonusChange: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1504907057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239021,6 +239016,8 @@ GameObject:
   - component: {fileID: 1733768056}
   - component: {fileID: 1733768060}
   - component: {fileID: 1733768061}
+  - component: {fileID: 1733768062}
+  - component: {fileID: 1733768063}
   m_Layer: 0
   m_Name: MapGeneration
   m_TagString: Untagged
@@ -239069,11 +239066,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5301932829c44459d895d129340332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeight: 1000
-  seaLevel: 400
-  minTempature: -50
-  maxTempature: 50
-  landscapeTilemap: {fileID: 785996345}
+  height: 1000
+  wetness: 100
+  tempature: 50
+  oceanLevel: 300
   biomes:
   - {fileID: 11400000, guid: 9aef4c3af76581347bb0d4b2951fd973, type: 2}
   - {fileID: 11400000, guid: f40931f88175fdb418165e4dcf38afed, type: 2}
@@ -239084,31 +239080,37 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 72332640090c08b45bb3230c3c6dd8e9, type: 2}
   - {fileID: 11400000, guid: 4e56e6f2aab21fd4b8771bf9be1a6a08, type: 2}
   - {fileID: 11400000, guid: d97dd5161480cf544b06d4ffb4de40bd, type: 2}
-  errorBiome: {fileID: 11400000, guid: 14bfc071dc20f684493be73607222c28, type: 2}
+  tilePlacing: {fileID: 1733768062}
   heightNoise:
-    noiseType: 3
-    octaves: 6
-    scale: 0.01
-    gain: 0.5
-    lacunarity: 2
-    randomSeed: 1
     seed: 84304
+    randomSeed: 1
+    frequency: 0.01
+    octaves: 4
+    lacunarity: 2
+    gain: 0.5
+    noiseType: 3
+    fractalType: 0
+    interp: 0
   wetnessNoise:
-    noiseType: 3
-    octaves: 6
-    scale: 0.01
-    gain: 0.5
-    lacunarity: 2
-    randomSeed: 1
     seed: 84304
+    randomSeed: 1
+    frequency: 0.01
+    octaves: 4
+    lacunarity: 2
+    gain: 0.5
+    noiseType: 3
+    fractalType: 0
+    interp: 0
   tempatureNoise:
-    noiseType: 3
-    octaves: 6
-    scale: 0.005
-    gain: 0.5
-    lacunarity: 2
-    randomSeed: 1
     seed: 84304
+    randomSeed: 1
+    frequency: 0.003
+    octaves: 4
+    lacunarity: 2
+    gain: 0.5
+    noiseType: 3
+    fractalType: 0
+    interp: 0
 --- !u!114 &1733768058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239121,7 +239123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92709c8cf4805ea4d92a8052159dbfa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: {x: 100, y: 100}
+  mapSize: {x: 200, y: 200}
   landscapeGenerator: {fileID: 1733768057}
   resourceGenerator: {fileID: 1733768056}
 --- !u!4 &1733768059
@@ -239150,7 +239152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eda5edfbabf46f40959ced8ce8434da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: {x: 0, y: 0}
+  sizeMultiplier: 1
 --- !u!114 &1733768061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239167,6 +239169,34 @@ MonoBehaviour:
   loadingBarFill: {fileID: 167254639}
   loadingText: {fileID: 1447340826}
   loadingScreen: {fileID: 1598604556}
+--- !u!114 &1733768062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733768055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2f066780fd7c84682f7bc4c2fe6f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 785996345}
+--- !u!114 &1733768063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733768055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63df470a2e0d374fac6748d1332b1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugType: 2
+  tilemap: {fileID: 785996345}
+  tileBase: {fileID: 11400000, guid: a0e9170c843ab214b82f9e3c775719b4, type: 2}
 --- !u!1 &1752703019
 GameObject:
   m_ObjectHideFlags: 0
@@ -240044,11 +240074,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bd17ae73adbc84ba8d23c65b8bc9af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempTarget: {fileID: 1504907044}
+  player: {fileID: 1504907044}
   aiEntries:
   - prefab: {fileID: 2610388363304533394, guid: ac1a1c82dc623c94b93aa7ee0eda693a, type: 3}
     spawnCooldown: 10
     maxSpawnCount: 20
+    minDistanceFromPlayer: 10
+    maxDistanceFromPlayer: 40
     spawnBiomes:
     - {fileID: 11400000, guid: 14bfc071dc20f684493be73607222c28, type: 2}
     - {fileID: 11400000, guid: a9f54c61569680c46b480c33115dbb8c, type: 2}

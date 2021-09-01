@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New item" , menuName = "Items/Item")]
 public class Item : ScriptableObject
 {
+    [Header("Item")]
     public string description;
     [Min(0)] public float weight = 1;
     [Min(1)] public int maxStack = 1;

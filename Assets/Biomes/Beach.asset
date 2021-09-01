@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1082eb53747e8478a8bda32f4581a5, type: 3}
   m_Name: Beach
   m_EditorClassIdentifier: 
-  isWalkable: 0
-  minTempature: -50
-  maxTempature: 50
-  minWetness: 0
-  maxWetness: 100
-  minLandHeight: 0
-  maxLandHeight: 1000
-  minSeaLevel: -10
-  maxSeaLevel: 0
-  minWaterLevel: -1000
-  maxWaterLevel: 0
-  minSize: 1
-  requiredNeighbourBiomes:
-  - {fileID: 11400000, guid: a05d455dd41054e44b367ead7f6a2215, type: 2}
   tile: {fileID: 11400000, guid: 9bc075647a1462a438aaacf84c96410d, type: 2}
+  maxHeight: 1000
+  minHeight: 0
+  maxWetness: 100
+  minWetness: 0
+  maxTempature: 50
+  minTempature: -50
+  maxOceanLevel: 0
+  minOceanLevel: -5
+  isWalkable: 0
+  minSize: 1
+  requiredBiomeNeighbours:
+  - {fileID: 11400000, guid: a05d455dd41054e44b367ead7f6a2215, type: 2}

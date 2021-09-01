@@ -12,10 +12,16 @@ public class HealthSystem : StatSystem
 
     private void Awake()
     {
-        foodSystem.OnValueEmpty += EnableStarving;
-        foodSystem.OnValueNoLongerEmpty += DisableStarving;
-        thurstSystem.OnValueEmpty += EnableDehydration;
-        thurstSystem.OnValueNoLongerEmpty += DisableDehydration;
+        if (foodSystem)
+        {
+            foodSystem.OnValueEmpty += EnableStarving;
+            foodSystem.OnValueNoLongerEmpty += DisableStarving;
+        }
+        if (thurstSystem)
+        {
+            thurstSystem.OnValueEmpty += EnableDehydration;
+            thurstSystem.OnValueNoLongerEmpty += DisableDehydration;
+        }
     }
 
     private void Update()

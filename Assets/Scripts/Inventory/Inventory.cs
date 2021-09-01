@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour
     [Min(1)][SerializeField] private Vector2Int sizeVar = new Vector2Int(1,1);
     [SerializeField] private StartingItem[] startingItems;
 
-    private void Start()
+    protected void Start()
     {
         size = sizeVar;
         GetStartingItems();
@@ -82,7 +82,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddItem(Item item, int amount)
+    public virtual Item AddItem(Item item, int amount)
     {
         for (int y = 0; y < size.y; y++)
         {
@@ -97,12 +97,12 @@ public class Inventory : MonoBehaviour
                     slots[x, y].amount += amountToAdd;
                     amount -= amountToAdd;
                     OnInventoryChanged();
-                    if (amount <= 0) return;
+                    if (amount <= 0) return slots[x, y];
                 }
             }
         }
 
-        if (amount <= 0) return;
+        if (amount <= 0) return null;
 
         for (int y = 0; y < size.y; y++)
         {
@@ -119,13 +119,15 @@ public class Inventory : MonoBehaviour
                 {
                     slots[x, y] = item.Create(item, this, amount);
                     OnInventoryChanged();
-                    return;
+                    return slots[x, y];
                 }
             }
         }
+
+        return null;
     }
 
-    public void AddItem(Item item)
+    public virtual Item AddItem(Item item)
     {
         for (int y = 0; y < size.y; y++)
         {
@@ -135,16 +137,18 @@ public class Inventory : MonoBehaviour
                 slots[x, y] = item;
                 item.inventory = this;
                 OnInventoryChanged();
-                return;
+                return slots[x, y];
             }
         }
+        return null;
     }
 
-    public void AddItem(Item item, Vector2Int index)
+    public virtual Item AddItem(Item item, Vector2Int index)
     {
         slots[index.x, index.y] = item;
         item.inventory = this;
         OnInventoryChanged();
+        return slots[index.x, index.y];
     }
 
     public bool SlotHasItem(Vector2Int index)
@@ -187,11 +191,29 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    public Item RemoveItem(Vector2Int index)
+    public virtual Item RemoveItem(Vector2Int index)
     {
         Item removingItem = slots[index.x, index.y];
         slots[index.x, index.y] = null;
         OnInventoryChanged();
         return removingItem;
+    }
+
+    public virtual Item RemoveItem(Item item)
+    {
+        for (int y = 0; y < size.y; y++)
+        {
+            for (int x = 0; x < size.x; x++)
+            {
+                if (slots[x,y] == item)
+                {
+                    slots[x, y] = null;
+                    OnInventoryChanged();
+                    return item;
+                }
+            }
+        }
+
+        return null;
     }
 }

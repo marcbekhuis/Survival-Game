@@ -9,7 +9,7 @@ public class HarvestingTool : Tool
     {
     }
 
-    public HarvestingTool(string description, float weight, int maxStack, Sprite icon, Sprite sprite, Inventory inventory, float maxDurability, float damage, float radius, float arc, int amount = 1) : base(description, weight, maxStack, icon, sprite, inventory, maxDurability, damage, radius, arc, amount)
+    public HarvestingTool(string description, float weight, int maxStack, Sprite icon, Sprite sprite, Inventory inventory, float maxDurability, float useDurability, float damage, float radius, float arc, int amount = 1) : base(description, weight, maxStack, icon, sprite, inventory, maxDurability, useDurability, damage, radius, arc, amount)
     {
     }
 
@@ -22,19 +22,15 @@ public class HarvestingTool : Tool
     {
         playerUseObjects.OnUse += UseDurability;
         HarvestAttack harvestAttack = componentGameObject.GetComponent<HarvestAttack>();
-        MeleeAttack meleeAttack = componentGameObject.GetComponent<MeleeAttack>();
 
         harvestAttack.SetSettings(damage, radius, arc);
-        meleeAttack.SetSettings(damage, radius, arc);
 
         playerUseObjects.OnUse += harvestAttack.Attack;
-        playerUseObjects.OnUse += meleeAttack.Attack;
     }
 
     public override void RemoveUsage(GameObject componentGameObject, PlayerUseObjects playerUseObjects)
     {
         playerUseObjects.OnUse -= UseDurability;
         playerUseObjects.OnUse -= componentGameObject.GetComponent<HarvestAttack>().Attack;
-        playerUseObjects.OnUse -= componentGameObject.GetComponent<MeleeAttack>().Attack;
     }
 }
