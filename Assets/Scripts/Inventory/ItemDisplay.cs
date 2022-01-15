@@ -8,7 +8,9 @@ public class ItemDisplay : MonoBehaviour
     private Item itemVar;
 
     private Text amountText;
-    private Image IconImage;
+    private Image iconImage;
+    private Image durabilityBar;
+    private Image Durabilityfill;
     private RectTransform rectTransform;
     private bool tooltipActivating = true;
 
@@ -30,7 +32,9 @@ public class ItemDisplay : MonoBehaviour
     public void Setup(bool tooltipactivating)
     {
         amountText = transform.Find("Amount").GetComponent<Text>();
-        IconImage = transform.Find("Icon").GetComponent<Image>();
+        iconImage = transform.Find("Icon").GetComponent<Image>();
+        durabilityBar = transform.Find("Durability bar").GetComponent<Image>();
+        Durabilityfill = durabilityBar.transform.Find("Durability fill").GetComponent<Image>();
         this.tooltipActivating = tooltipactivating;
         if(!tooltipActivating) TooltipHandler.instance.RemoveItemDisplay(this);
     }
@@ -46,7 +50,17 @@ public class ItemDisplay : MonoBehaviour
             amountText.text = item.amount.ToString();
             amountText.gameObject.SetActive(true);
         }
-        IconImage.sprite = item.icon;
+        iconImage.sprite = item.icon;
+        if (item.IsType<Durability>())
+        {
+            Durability durability = item.GetType<Durability>();
+            UpdateDurabilityBar(durability.durability, durability.maxDurability);
+            durability.OnValueChanged += UpdateDurabilityBar;
+        }
+        else
+        {
+            durabilityBar.gameObject.SetActive(false);
+        }
     }
 
     public bool MouseOver(out Item item)
@@ -76,5 +90,12 @@ public class ItemDisplay : MonoBehaviour
     private void OnDisable()
     {
         if (tooltipActivating) TooltipHandler.instance.RemoveItemDisplay(this);
+    }
+
+    private void UpdateDurabilityBar(float durability, float maxDurability)
+    {
+        float procentage = durability / maxDurability;
+
+        Durabilityfill.rectTransform.sizeDelta = new Vector2(durabilityBar.rectTransform.rect.width * procentage, durabilityBar.rectTransform.rect.height);
     }
 }

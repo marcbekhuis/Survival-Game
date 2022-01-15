@@ -18,7 +18,7 @@ public class HotbarInventory : Inventory
     private void Start()
     {
         base.Start();
-        SelectItem();
+        //SelectItem();
     }
 
     private void Update()
@@ -90,21 +90,36 @@ public class HotbarInventory : Inventory
     public override Item AddItem(Item item)
     {
         Item addedItem = base.AddItem(item);
-        SelectItem();
+        if (GetItemIndex(addedItem) == index) SelectItem();
         return addedItem;
     }
 
     public override Item AddItem(Item item, int amount)
     {
         Item addedItem = base.AddItem(item, amount);
-        SelectItem();
+        if (GetItemIndex(addedItem) == index) SelectItem();
         return addedItem;
     }
     
     public override Item AddItem(Item item, Vector2Int index)
     {
         Item addedItem = base.AddItem(item, index);
-        SelectItem();
+        if(index == index2d) SelectItem();
         return addedItem;
+    }
+
+    private int GetItemIndex(Item item)
+    {
+        for (int y = 0; y < size.y; y++)
+        {
+            for (int x = 0; x < size.x; x++)
+            {
+                if(slots[x,y] == item)
+                {
+                    return y * size.x + x;
+                }
+            }
+        }
+        return 0;
     }
 }
