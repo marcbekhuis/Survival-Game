@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using UnityEngine.Tilemaps;
 
 public class DayNightCycle : MonoBehaviour
@@ -18,7 +18,7 @@ public class DayNightCycle : MonoBehaviour
     [Space]
     [SerializeField] private AnimationCurve lightBrightness;
     [Space]
-    [SerializeField] private Light2D light;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D light;
     [SerializeField] private Tilemap[] shadowsTilemaps;
     [SerializeField] private List<SpriteRenderer> shadowsSpriteRenderers;
 

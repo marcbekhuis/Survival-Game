@@ -42,6 +42,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -252,6 +253,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      PC Computer - Stardew Valley - Background Trees & Plants_0: 4487693850059351526
+      PC Computer - Stardew Valley - Background Trees & Plants_5: -7170350975258145757
+      PC Computer - Stardew Valley - Background Trees & Plants_2: 8093737739113297707
+      PC Computer - Stardew Valley - Background Trees & Plants_3: -103992268756716851
+      PC Computer - Stardew Valley - Background Trees & Plants_1: 8063427900257831257
+      PC Computer - Stardew Valley - Background Trees & Plants_4: -7786677950422000331
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
